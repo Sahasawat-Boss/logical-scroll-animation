@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Slide In</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+
+        .full-screen-section {
+            height: 100vh;
+            padding: 50px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #f4f4f4;
+            border-bottom: 1px solid #ddd;
+        }
+
+        h1 {
+            margin: 0 0 10px;
+        }
+
+        p {
+            margin: 0 0 20px;
+        }
+
+        .image-slide-in {
+            position: relative;
+            left: -100%;
+            opacity: 0;
+            transition: all 1s ease;
+            max-width: 400px;
+        }
+
+        .image-slide-in.show {
+            left: 0;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="full-screen-section first-main-section">
+        <h1>Animate Test 2</h1>
+        <p>Never touch the command line, from provision to production.</p>
+    </section>
+
+    <section class="full-screen-section" id="ImageDisplay">
+        <h1>Stack</h1>
+        <p>
+            Never manage infrastructure again. One click gets you: a database, APIs,
+            deployments, hosting, etc.
+        </p>
+        <div class="image-slide-in" id="slideImage">
+            <img src="https://media.istockphoto.com/id/1195199589/photo/dark-blue-spaceship-futuristic-interior-with-window-view-on-planet-earth-3d-rendering.jpg?s=612x612&w=0&k=20&c=H0_qt9Ry98ksk32RKqUBXlyWbnXtGlAt9ulqzq_UWl8=" alt="Example Image" />
+        </div>
+    </section>
+
+    <section class="full-screen-section">
+        <h1>Launch Faster</h1>
+        <p>Logical can get systems to market in minutes instead of weeks.</p>
+
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const target = document.getElementById("ImageDisplay");
+            const image = document.getElementById("slideImage");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        image.classList.add("show");
+                    }
+                });
+            }, { threshold: 0.7 });
+
+            observer.observe(target);
+        });
+    </script>
+
+</body>
+
+</html>
