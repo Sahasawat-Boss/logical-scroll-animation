@@ -6,8 +6,8 @@
 
 body {
     margin: 0;
-    color: #141616;
-    background-color: #e6e9ea;
+    color: #386363;
+    background-color: #051e29;
     font-size: 28px;
 }
 
@@ -95,17 +95,17 @@ h1 {
 .imgs>* {
     position: fixed;
     width: 100vw;
-    bottom: 0;
+    bottom: 40px;
     z-index: 10;
     translate: 0 100%;
     transition: translate 250ms ease-in-out;
 }
 
 .imgs>.show {
-    translate: 0 0;
+    translate: 0 0; /* ✅ เมื่อลูกของ .imgs มีคลาส .show → ให้ย้ายกลับมาอยู่ตำแหน่งปกติ (ไม่ขยับลง) */
 }
 
 [data-img-to-show] {
-    position: absolute;
-    top: 20%;
+    position: absolute;  
+    top: 20%;            /* ✅ วางไว้ห่างจากด้านบนของ container 10% */
 }
